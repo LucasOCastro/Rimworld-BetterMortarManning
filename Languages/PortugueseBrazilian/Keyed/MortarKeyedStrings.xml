@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LanguageData>
+    <CrazyMalk_CommandManAll>Operar Todos</CrazyMalk_CommandManAll>
+    <CrazyMalk_CommandManAllDesc>Arrume um colono para operar cada morteiro</CrazyMalk_CommandManAllDesc>
+    <CrazyMalk_NoFreePawnsToMan>Nenhum colono disponível para operar esse morteiro</CrazyMalk_NoFreePawnsToMan>
+    <CrazyMalk_NoFreePawnsToManPlural>Sem colonos disponíveis para operar os morteiros</CrazyMalk_NoFreePawnsToManPlural>
+</LanguageData>

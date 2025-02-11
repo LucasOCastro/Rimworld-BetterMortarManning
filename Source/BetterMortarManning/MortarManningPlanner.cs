@@ -68,8 +68,7 @@ namespace BetterMortarManning
             string message = failedMortars.Count == 1 ?
                 "CrazyMalk_NoFreePawnsToMan" :
                 "CrazyMalk_NoFreePawnsToManPlural";
-
-            Messages.Message(message, targets, MessageTypeDefOf.RejectInput, false);
+            Messages.Message(message.Translate(), targets, MessageTypeDefOf.RejectInput, false);
         }
     }
 }
