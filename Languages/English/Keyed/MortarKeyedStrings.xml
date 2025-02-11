@@ -5,4 +5,7 @@
     <CrazyMalk_CommandManAllDesc>Assign a pawn for each selected mortar</CrazyMalk_CommandManAllDesc>
     <CrazyMalk_NoFreePawnsToMan>No pawn is available to man this mortar</CrazyMalk_NoFreePawnsToMan>
     <CrazyMalk_NoFreePawnsToManPlural>No pawns are available to man the mortars</CrazyMalk_NoFreePawnsToManPlural>
+    
+    <CrazyMalk_CommandAttackArea>Attack Area</CrazyMalk_CommandAttackArea>
+    <CrazyMalk_CommandAttackAreaDesc>Fire the mortar at the area.</CrazyMalk_CommandAttackAreaDesc>
 </LanguageData>
