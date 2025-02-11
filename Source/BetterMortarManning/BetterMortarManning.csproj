@@ -54,6 +54,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Command_VerbAreaTarget.cs" />
         <Compile Include="CompProperties_BetterMortar.cs" />
         <Compile Include="CompBetterMortar.cs" />
         <Compile Include="MortarManningPlanner.cs" />

@@ -6,6 +6,27 @@ namespace BetterMortarManning
 {
     public static class MortarUtility
     {
+        public static bool IsMortar(Building_Turret turret)
+        {
+            return turret.def.building.IsMortar;
+        }
+        
+        public static bool IsMortarOrProjectileFliesOverhead(Building_Turret turret)
+        {
+            return turret.AttackVerb.ProjectileFliesOverhead() || IsMortar(turret);
+        }
+        
+        public static bool CanShoot(Building_Turret turret)
+        {
+            if (!turret.Spawned)
+                return false;
+            
+            if (IsMortarOrProjectileFliesOverhead(turret) && turret.Position.Roofed(turret.Map))
+                return false;
+
+            return true;
+        }
+        
         public static bool CanMan(CompMannable mannable, Pawn pawn)
         {
             if (!pawn.RaceProps.ToolUser)
