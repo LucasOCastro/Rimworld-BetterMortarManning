@@ -47,6 +47,7 @@ namespace BetterMortarManning
             PlaySound(successfulMortars.Count > 0);
             
             SimplePool<HashSet<Pawn>>.Return(busyPawns);
+            SimplePool<List<CompMannable>>.Return(successfulMortars);
             SimplePool<List<CompMannable>>.Return(failedMortars);
             SimplePool<List<CompMannable>>.Return(selectedMortars); 
         }
