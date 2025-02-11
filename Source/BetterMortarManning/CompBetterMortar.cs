@@ -11,6 +11,9 @@ namespace BetterMortarManning
         private static readonly CachedTexture ToggleTurretIcon = new("UI/Gizmos/ToggleTurret");
         private static readonly CachedTexture AttackIcon = new("UI/Commands/Attack");
         
+        private CompMannable? _mannable;
+        public CompMannable Mannable => _mannable ??= parent.GetComp<CompMannable>();
+        
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
             foreach (var gizmo in base.CompGetGizmosExtra())
@@ -19,8 +22,10 @@ namespace BetterMortarManning
             if (parent.Faction != Faction.OfPlayer)
                 yield break;
 
-            yield return GenManAllCommand();
-            yield return GenAttackAreaCommand();
+            if (!Mannable.MannedNow)
+                yield return GenManAllCommand();
+            else
+                yield return GenAttackAreaCommand();
         }
 
         private Gizmo GenAttackAreaCommand()
