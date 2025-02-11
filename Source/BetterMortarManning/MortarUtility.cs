@@ -29,6 +29,10 @@ namespace BetterMortarManning
         
         public static bool CanMan(CompMannable mannable, Pawn pawn)
         {
+            // Hard coded mechanoid check :(
+            if (!pawn.RaceProps.Humanlike)
+                return false;
+            
             if (!pawn.RaceProps.ToolUser)
                 return false;
             
