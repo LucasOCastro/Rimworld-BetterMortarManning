@@ -2,6 +2,7 @@
 using System.Linq;
 using RimWorld;
 using Verse;
+using Verse.Sound;
 
 namespace BetterMortarManning
 {
@@ -18,6 +19,7 @@ namespace BetterMortarManning
             _lastTick = currentTick;
             
             var busyPawns = SimplePool<HashSet<Pawn>>.Get()!;
+            var successfulMortars = SimplePool<List<CompMannable>>.Get()!;
             var failedMortars = SimplePool<List<CompMannable>>.Get()!;
             var selectedMortars = SimplePool<List<CompMannable>>.Get()!;
             selectedMortars.AddRange(GetSelectedMortars());
@@ -28,15 +30,19 @@ namespace BetterMortarManning
                 if (pawn == null)
                 {
                     // play the little message on the top, not a letter
-                    failedMortars.Add(mortar);
+                    if (mortar.parent.Faction == Faction.OfPlayer)
+                        failedMortars.Add(mortar);
                     continue;
                 }
                 
                 busyPawns.Add(pawn);
                 MortarUtility.CommandMan(mortar, pawn);
+                successfulMortars.Add(mortar);
             }
 
-            PlayFailMessage(failedMortars);
+            NotifySuccess(successfulMortars);
+            NotifyFail(failedMortars);
+            PlaySound(successfulMortars.Count > 0);
             
             SimplePool<HashSet<Pawn>>.Return(busyPawns);
             SimplePool<List<CompMannable>>.Return(failedMortars);
@@ -59,7 +65,21 @@ namespace BetterMortarManning
                 .FirstOrDefault();
         }
 
-        private static void PlayFailMessage(List<CompMannable> failedMortars)
+        private static void PlaySound(bool success)
+        {
+            var sound = success ? SoundDefOf.Tick_High : SoundDefOf.Crunch;
+            sound.PlayOneShotOnCamera();
+        }
+
+        private static void NotifySuccess(List<CompMannable> selectedMortars)
+        {
+            if (selectedMortars.Count == 0)
+                return;
+            
+            // TODO Select or point to the chosen pawns
+        }
+        
+        private static void NotifyFail(List<CompMannable> failedMortars)
         {
             if (failedMortars.Count == 0)
                 return;
