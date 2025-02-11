@@ -3,7 +3,7 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/ThingDef[comps/li[@Class='CompProperties_Mannable']]/comps</xpath>
 		<value>
-			<li Class="BetterMortarManning.CompBetterMortar"/>
+			<li Class="BetterMortarManning.CompProperties_BetterMortar"/>
 		</value>
 	</Operation>
 </Patch>
