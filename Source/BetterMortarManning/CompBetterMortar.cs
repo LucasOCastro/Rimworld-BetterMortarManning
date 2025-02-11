@@ -2,8 +2,6 @@
 using RimWorld;
 using Verse;
 
-// ReSharper disable InconsistentNaming
-
 namespace BetterMortarManning
 {
     public class CompBetterMortar : ThingComp

@@ -35,9 +35,11 @@ namespace BetterMortarManning
                     continue;
                 }
                 
+                if (mortar.parent.Faction == Faction.OfPlayer)
+                    successfulMortars.Add(mortar);
+                
                 busyPawns.Add(pawn);
                 MortarUtility.CommandMan(mortar, pawn);
-                successfulMortars.Add(mortar);
             }
 
             NotifySuccess(successfulMortars);
