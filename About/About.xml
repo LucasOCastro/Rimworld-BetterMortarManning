@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-
 	<packageId>crazymalk.BetterMortarManning</packageId>
 	<name>Better Mortar Manning</name>
 	<author>CrazyMalk</author>
+	<modVersion>1.0.2</modVersion>
 	<description>Man multiple mortars with the closest colonist and attack a whole area at once</description>
 	<supportedVersions>
 		<li>1.5</li>
 	</supportedVersions>
-
 </ModMetaData>
