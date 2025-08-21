@@ -6,8 +6,8 @@ namespace BetterMortarManning
 {
     public class CompBetterMortar : ThingComp
     {
-        private static readonly CachedTexture ToggleTurretIcon = new("UI/Gizmos/ToggleTurret");
-        private static readonly CachedTexture AttackIcon = new("UI/Commands/Attack");
+        private static readonly CachedTexture ManAllIcon = new("UI/Commands/SquadAttack");
+        private static readonly CachedTexture AreaAttackIcon = new("UI/Commands/Attack");
         
         private CompMannable? _mannable;
         public CompMannable Mannable => _mannable ??= parent.GetComp<CompMannable>();
@@ -31,7 +31,7 @@ namespace BetterMortarManning
             var turret = (Building_Turret)parent;
             var command = new Command_VerbAreaTarget
             {
-                icon = AttackIcon.Texture,
+                icon = AreaAttackIcon.Texture,
                 defaultLabel = "CrazyMalk_CommandAttackArea".Translate(),
                 defaultDesc = "CrazyMalk_CommandAttackAreaDesc".Translate(),
                 verb = turret.AttackVerb,
@@ -50,7 +50,7 @@ namespace BetterMortarManning
         {
             return new Command_Action
             {
-                icon = ToggleTurretIcon.Texture,
+                icon = ManAllIcon.Texture,
                 defaultLabel = "CrazyMalk_CommandManAll".Translate(),
                 defaultDesc = "CrazyMalk_CommandManAllDesc".Translate(),
                 action = MortarManningPlanner.ManSelected
