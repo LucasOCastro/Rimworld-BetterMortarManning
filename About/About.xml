@@ -3,9 +3,10 @@
 	<packageId>crazymalk.BetterMortarManning</packageId>
 	<name>Better Mortar Manning</name>
 	<author>CrazyMalk</author>
-	<modVersion>1.0.2</modVersion>
+	<modVersion>1.0.3</modVersion>
 	<description>Man multiple mortars with the closest colonist and attack a whole area at once</description>
 	<supportedVersions>
 		<li>1.5</li>
+		<li>1.6</li>
 	</supportedVersions>
 </ModMetaData>
