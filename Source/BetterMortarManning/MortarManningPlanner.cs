@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using UnityEngine.Pool;
 using Verse;
 using Verse.Sound;
 
@@ -18,10 +19,10 @@ namespace BetterMortarManning
                 return;
             _lastTick = currentTick;
             
-            var busyPawns = SimplePool<HashSet<Pawn>>.Get()!;
-            var successfulMortars = SimplePool<List<CompMannable>>.Get()!;
-            var failedMortars = SimplePool<List<CompMannable>>.Get()!;
-            var selectedMortars = SimplePool<List<CompMannable>>.Get()!;
+            var busyPawns = HashSetPool<Pawn>.Get()!;
+            var successfulMortars = ListPool<CompMannable>.Get()!;
+            var failedMortars = ListPool<CompMannable>.Get()!;
+            var selectedMortars = ListPool<CompMannable>.Get()!;
             selectedMortars.AddRange(GetSelectedMortars());
             
             foreach (var mortar in selectedMortars)
@@ -29,7 +30,6 @@ namespace BetterMortarManning
                 var pawn = GetClosestFreePawnToMortar(mortar, busyPawns);
                 if (pawn == null)
                 {
-                    // play the little message on the top, not a letter
                     if (mortar.parent.Faction == Faction.OfPlayer)
                         failedMortars.Add(mortar);
                     continue;
@@ -46,10 +46,10 @@ namespace BetterMortarManning
             NotifyFail(failedMortars);
             PlaySound(successfulMortars.Count > 0);
             
-            SimplePool<HashSet<Pawn>>.Return(busyPawns);
-            SimplePool<List<CompMannable>>.Return(successfulMortars);
-            SimplePool<List<CompMannable>>.Return(failedMortars);
-            SimplePool<List<CompMannable>>.Return(selectedMortars); 
+            HashSetPool<Pawn>.Release(busyPawns);
+            ListPool<CompMannable>.Release(successfulMortars);
+            ListPool<CompMannable>.Release(failedMortars);
+            ListPool<CompMannable>.Release(selectedMortars);
         }
         
         private static IEnumerable<CompMannable> GetSelectedMortars()

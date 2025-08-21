@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
@@ -19,10 +18,10 @@ public static class RectUtility
         return new(from.x, from.z, to.x - from.x + 1, to.z - from.z + 1);
     }
 
-    // Maybe consider target range for each cell
+    // Maybe consider the target range for each cell
     public static IEnumerable<IntVec3> GetGridCells(this CellRect rect, int count)
     {
-        // If the rect is smaller than the count, just return the cells
+        // If the rect is smaller than the count, return all cells
         var cells = rect.Cells.ToList();
         if (cells.Count <= count)
         {
